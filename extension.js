@@ -1,35 +1,40 @@
+var vscode = require("vscode");
+var logicalFolders = require("./logicalProvider");
 
-var vscode = require( 'vscode' );
-var VirtualFolders = require( "./dataProvider" );
+function activate(context) {
+  // init logic folder
+  var provider = new logicalFolders.LogicalFolderProvider(context);
+  vscode.window.registerTreeDataProvider("logical-folders", provider);
 
-function activate( context )
-{
-    var provider = new VirtualFolders.VirtualFoldersDataProvider( context );
-    vscode.window.registerTreeDataProvider( 'virtual-folders', provider );
+  // Refresh function for module
+  function refresh() {
+    provider.refresh();
+  }
 
-    function refresh()
-    {
-        provider.refresh();
-    }
+  // Register open file function
+  context.subscriptions.push(
+    vscode.commands.registerCommand("logical-folders.openFile", (document) => {
+      vscode.window.showTextDocument(document);
+    })
+  );
 
-    vscode.commands.registerCommand( 'virtual-folders.openFile', ( document ) =>
-    {
-        vscode.window.showTextDocument( document );
-    } );
+  // Register refresh function
+  context.subscriptions.push(
+    vscode.commands.registerCommand("logical-folders.refresh", refresh)
+  );
 
-    context.subscriptions.push( vscode.commands.registerCommand( 'virtual-folders.refresh', refresh ) );
+  // Register refresh on editor change
+  context.subscriptions.push(
+    vscode.window.onDidChangeVisibleTextEditors(function () {
+      refresh();
+    })
+  );
 
-    vscode.window.onDidChangeVisibleTextEditors( function()
-    {
-        refresh();
-    } );
-
-    refresh();
+  // Refresh
+  refresh();
 }
 
-function deactivate()
-{
-}
+function deactivate() {}
 
 exports.activate = activate;
 exports.deactivate = deactivate;
