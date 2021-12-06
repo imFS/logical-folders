@@ -1,62 +1,61 @@
-# Virtual Folders
+# Logical Folders
 
-This was based on a [feature request](https://github.com/Microsoft/vscode/issues/39072). It allows you to define virtual folders in a separate view. So if you're working on a C++ project, you can have headers and source files organised separately.
+Logical folders, allows you to setup filters for different file types/extensions and display them in 'logical' or 'virtual' folders to make navigating/organization easier.
 
-If no virtual folders are defined in your preferences, it will simply group files by their extension. If you want you can close the standard Open Editors view.
-
-Pros:
-
-- keeps files organised
-- sorts files in alphabetical order
-
-Cons:
-
-- doesn't show SCM status
-- no close button
-- doesn't show icons (at the moment)
-- doesn't show foldername for files which aren't directly in the current workspace (at the moment)
-
-## Installing
-
-You can install the latest version of the extension via the Visual Studio Marketplace [here](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.virtual-folders).
-
-Alternatively, open Visual Studio code, press `Ctrl+P` or `Cmd+P` and type:
-
-    > ext install virtual-folders
+This was based on the virtual folders project from "Gruntfuggly".
+Forked the repo and did modifications on it, you can find the original here: https://github.com/Gruntfuggly/virtual-folders
 
 ### Source Code
 
-The source code is available on GitHub [here](https://github.com/Gruntfuggly/virtual-folders).
+GitHub [repo](https://github.com/imFS/logical-folders).
 
 ## Configuration
 
-The extension can be configured as follows:
+The extension can be configured under the name:
+`logical-folders.folders`
 
-`virtual-folders.folders`
-
-Defines folder names with a list of globs to match files. E.g. for C++ you could use:
+You will have to modify your settings.json in vscode, Example:
 
 ```
-"virtual-folders.folders":[
-    {
-        "name": "Headers",
-        "files": [
-            "**/*.h"
-        ]
-    },
-    {
-        "name": "Source",
-        "files": [
-            "**/*.cpp"
-        ]
-    }
-]
+{
+    "logical-folders.folders": [
+        {
+            "name": "JS Files",
+            "files": [
+                "*.js"
+            ]
+        },
+        {
+            "name": "Json Files",
+            "files": [
+                "*.json"
+            ]
+        },
+        {
+            "name": "CPP",
+            "files": [
+                "*.cpp"
+            ]
+        },
+        {
+            "name": "Headers",
+            "files": [
+                "*.h",
+                "*.hpp"
+            ]
+        },
+        {
+            "name": "ASM",
+            "files": [
+                "*.asm"
+            ]
+        }
+    ]
+}
 ```
-
-## Known issues
-
-Due to a vscode API limitation, files are only added to the view as they are opened. The downside of this is that when you reopen vscode, the view will be empty. As each file is visited, it will get added to the view.
 
 ### Credits
 
-Icon by [Hopstarter](http://www.iconarchive.com/artist/hopstarter.html)
+"Gruntfuggly" he is the reason I was able to do something so quick.
+After hours of looking around that defines what I wanted he had the exact project, only sad part was vscode api limitations and the project being old.
+Also me melting my brain trying to write code in JS, again 10+ hours gone just because I'm too blind.
