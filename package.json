@@ -8,7 +8,7 @@
   "engines": {
     "vscode": "^1.5.0"
   },
-  "repository": "https://github.com/Gruntfuggly/virtual-folders",
+  "repository": "https://github.com/imFS/logical-folders",
   "categories": [
     "Other"
   ],
