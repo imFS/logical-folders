@@ -1,6 +1,6 @@
-# v0.0.1 - 2017-12-06
+# v0.0.1 - 2021-12-06
 
-- All files within workplace should work from now on.
+- Changed 'document' system to search all files from the workspace. This should fix the old 'have to open by editor problem'
 
 # v0.0.1 - 2021-12-05
 
