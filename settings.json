@@ -1,0 +1,35 @@
+{
+    "logical-folders.folders": [
+        {
+            "name": "JS Files",
+            "files": [
+                "*.js"
+            ]
+        },
+        {
+            "name": "Json Files",
+            "files": [
+                "*.json"
+            ]
+        },
+        {
+            "name": "CPP",
+            "files": [
+                "*.cpp"
+            ]
+        },
+        {
+            "name": "Headers",
+            "files": [
+                "*.h",
+                "*.hpp"
+            ]
+        },
+        {
+            "name": "ASM",
+            "files": [
+                "*.asm"
+            ]
+        }
+    ]
+}

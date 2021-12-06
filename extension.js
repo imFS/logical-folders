@@ -2,19 +2,21 @@ var vscode = require("vscode");
 var logicalFolders = require("./logicalProvider");
 
 function activate(context) {
+  console.log("Loading ..");
+
   // init logic folder
   var provider = new logicalFolders.LogicalFolderProvider(context);
   vscode.window.registerTreeDataProvider("logical-folders", provider);
 
   // Refresh function for module
-  function refresh() {
+  async function refresh() {
     provider.refresh();
   }
 
   // Register open file function
   context.subscriptions.push(
-    vscode.commands.registerCommand("logical-folders.openFile", (document) => {
-      vscode.window.showTextDocument(document);
+    vscode.commands.registerCommand("logical-folders.openFile", (element) => {
+      vscode.window.showTextDocument(vscode.Uri.file(element.path));
     })
   );
 
@@ -25,13 +27,15 @@ function activate(context) {
 
   // Register refresh on editor change
   context.subscriptions.push(
-    vscode.window.onDidChangeVisibleTextEditors(function () {
-      refresh();
+    vscode.window.onDidChangeVisibleTextEditors(async function () {
+      await refresh();
     })
   );
 
   // Refresh
   refresh();
+
+  console.log("Loaded.");
 }
 
 function deactivate() {}

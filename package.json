@@ -3,7 +3,7 @@
   "displayName": "Logical Folders",
   "description": "Custom tree view to show files in logical folders. Modified version of Gruntfuggly's virtual folders.",
   "version": "0.0.1",
-  "icon": "",
+  "icon": "resources/logical-folders.png",
   "publisher": "imFS",
   "engines": {
     "vscode": "^1.5.0"
@@ -61,6 +61,7 @@
     "dependencies": {}
   },
   "dependencies": {
+    "brace-expansion": "^2.0.1",
     "minimatch": "^3.0.4"
   }
 }

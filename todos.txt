@@ -1,0 +1,4 @@
+TODO: Make the files/folders variable stable dont reset it everytime instead check if file rmeoved and update on that?
+TODO: Or maybe just order it everytime but that would put more performance hit?
+TODO: Write a function to check if file no more existent
+TODO: Find a way to when double clicked on file to open in new tab
