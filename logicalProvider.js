@@ -137,8 +137,7 @@ class LogicalFolderProvider {
     // Set logical folders empty
     vscode.commands.executeCommand("setContext", "logicalfolders-empty", true);
 
-    //folders = [];
-    let promises = [];
+    //folders = []; Disabled for now
 
     // Get files and extension config
     // OLD: var documents = vscode.workspace.findFiles();
@@ -206,8 +205,6 @@ class LogicalFolderProvider {
         }
       }
     }
-
-    await Promise.all(promises);
 
     // Update vscode saying something changed in tree data
     this._onDidChangeTreeData.fire();
